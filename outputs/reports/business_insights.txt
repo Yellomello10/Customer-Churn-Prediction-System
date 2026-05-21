@@ -1,0 +1,80 @@
+================================================================================
+CUSTOMER CHURN prediction & BUSINESS INSIGHTS REPORT
+================================================================================
+Prepared by: Senior Data Scientist / ML Engineer
+Status: Completed
+Selected Prediction Model: Logistic Regression
+================================================================================
+
+1. EXECUTIVE SUMMARY
+-------------------
+An analysis of 7,043 customers reveals an overall churn rate of 26.54%. Out of the 
+analyzed base, 1,869 customers left the company. The predictive system has selected 
+the Logistic Regression pipeline as the most robust model for early detection, enabling targeting 
+of high-risk customers with proactive retention campaigns.
+
+2. KEY CHURN DRIVERS & DESCRIPTIVE ANALYSIS
+-------------------------------------------
+
+A. Impact of Contract Type (High Significance)
+   - Month-to-month contract customers show an extremely high churn rate of 42.71% (Count: 3,875).
+   - One-year contract customers churn rate: 11.27% (Count: 1,473).
+   - Two-year contract customers show a very low churn rate of 2.83% (Count: 1,695).
+   
+   Insight: Contract rigidity is the strongest predictor of customer loyalty. Customers on short-term 
+   flexible contracts have very low switching costs and high churn propensity.
+
+B. Financial / Billing Impact
+   - Active (No Churn) Customers Average Monthly Bill : $61.27
+   - Churned Customers Average Monthly Bill            : $74.44
+   
+   Insight: Customers who churned were paying, on average, $13.18 more per month 
+   than active customers. High monthly charges strongly correlate with increased churn, suggesting price 
+   sensitivity or dissatisfaction with perceived value.
+
+C. Tenure & Relationship Life Cycle
+   - Churn rate in the first 12 months (Tenure <= 1 year): 47.44%
+   - Churn rate for long-term customers (Tenure > 24 months): 14.04%
+   
+   Insight: The first year of the customer journey is the most critical window. Customers who pass 
+   the 2-year mark exhibit significantly higher retention, reflecting long-term brand lock-in.
+
+D. Internet Service Risk Profiles
+   - DSL Service: Churn rate is 18.96% (Total Customers: 2,421.0)
+   - Fiber optic Service: Churn rate is 41.89% (Total Customers: 3,096.0)
+   - No Service: Churn rate is 7.40% (Total Customers: 1,526.0)
+
+   Insight: Fiber optic customers churn at a significantly higher rate than DSL or analog customers, 
+   despite fiber optic providing faster speeds. This suggests issues with connection stability, customer 
+   onboarding, or pricing dissatisfaction specific to the fiber service tier.
+
+E. Payment Method & Friction
+   - Bank transfer (automatic): Churn rate is 16.71% (Total Customers: 1,544.0)
+   - Credit card (automatic): Churn rate is 15.24% (Total Customers: 1,522.0)
+   - Electronic check: Churn rate is 45.29% (Total Customers: 2,365.0)
+   - Mailed check: Churn rate is 19.11% (Total Customers: 1,612.0)
+
+   Insight: Customers paying via Electronic Check churn at an alarmingly high rate compared to auto-pay 
+   methods (Credit Card or Bank Transfer). Electronic billing methods require monthly manual action, 
+   creating recurring decision points where a customer might choose to cancel their subscription.
+
+3. ACTIONABLE STRATEGIC RECOMMENDATIONS
+---------------------------------------
+1. CONTRACT MIGRATION CAMPAIGN: Launch targeted marketing campaigns offering incentives (e.g., $5 off 
+   per month or 1 month free) to Month-to-month customers if they switch to 1-year or 2-year contracts.
+   
+2. AUTOPAY SIGN-UP INCENTIVE: Focus on converting Electronic Check users to Credit Card or Bank Transfer 
+   autopay methods. Offer a one-time bill credit (e.g., $10) for set-and-forget billing enrollment.
+   
+3. EARLY-TENURE RETENTION PROGRAM: Develop an aggressive onboarding and check-in system for new customers 
+   during their first 6-12 months. Early tech support interventions can prevent churn before patterns set in.
+   
+4. FIBER OPTIC tier AUDIT: Investigate why Fiber Optic customers have high churn. Ensure support desks are 
+   adequately troubleshooting Fiber-specific latency, and check if pricing models are aligned with competitor rates.
+
+5. HIGH-RISK PRICING ADJUSTMENT: Leverage the Logistic Regression to flag customers whose monthly charges 
+   cross high thresholds, and offer them loyalty loyalty discounts or add-ons to enhance perceived value.
+
+================================================================================
+END OF REPORT
+================================================================================
