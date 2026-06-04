@@ -3,14 +3,14 @@ CUSTOMER CHURN prediction & BUSINESS INSIGHTS REPORT
 ================================================================================
 Prepared by: Senior Data Scientist / ML Engineer
 Status: Completed
-Selected Prediction Model: Logistic Regression
+Selected Prediction Model: Random Forest
 ================================================================================
 
 1. EXECUTIVE SUMMARY
 -------------------
 An analysis of 7,043 customers reveals an overall churn rate of 26.54%. Out of the 
 analyzed base, 1,869 customers left the company. The predictive system has selected 
-the Logistic Regression pipeline as the most robust model for early detection, enabling targeting 
+the Random Forest pipeline as the most robust model for early detection, enabling targeting 
 of high-risk customers with proactive retention campaigns.
 
 2. KEY CHURN DRIVERS & DESCRIPTIVE ANALYSIS
@@ -72,7 +72,7 @@ E. Payment Method & Friction
 4. FIBER OPTIC tier AUDIT: Investigate why Fiber Optic customers have high churn. Ensure support desks are 
    adequately troubleshooting Fiber-specific latency, and check if pricing models are aligned with competitor rates.
 
-5. HIGH-RISK PRICING ADJUSTMENT: Leverage the Logistic Regression to flag customers whose monthly charges 
+5. HIGH-RISK PRICING ADJUSTMENT: Leverage the Random Forest to flag customers whose monthly charges 
    cross high thresholds, and offer them loyalty loyalty discounts or add-ons to enhance perceived value.
 
 ================================================================================
