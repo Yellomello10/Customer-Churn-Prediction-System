@@ -3,35 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Churn Predictor</title>
+    <title>Customer Retention Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <div class="app-container">
         <!-- Header -->
-        <header>
-            <div class="logo">
-                <span class="pulse-dot"></span>
-                <h1>ChurnShield AI</h1>
+        <header class="app-header">
+            <div class="header-logo">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                </svg>
+                <h1>Retention Hub</h1>
             </div>
-            <p class="subtitle">Telecom Churn Risk Prediction & Prevention Dashboard</p>
+            <p class="header-subtitle">Telco Customer Risk Assessment & Account Action Portal</p>
         </header>
 
-        <!-- Main Content -->
+        <!-- Main Content Grid -->
         <main class="dashboard-grid">
-            <!-- Left Panel: Input Form -->
-            <section class="card form-card">
-                <div class="card-header">
-                    <h2>Customer Profile Input</h2>
-                    <p>Provide demographic, account, and billing details to evaluate loyalty metrics.</p>
+            <!-- Left Card: Customer Profile Input -->
+            <section class="panel-card input-panel">
+                <div class="panel-header">
+                    <h2>Account Information</h2>
+                    <p>Enter the demographic, service, and contract settings to run the risk evaluation model.</p>
                 </div>
+                
                 <form id="prediction-form">
-                    <!-- Section 1: Demographics -->
-                    <fieldset>
-                        <legend>Demographics & Status</legend>
+                    <!-- Demographic Group -->
+                    <fieldset class="form-section">
+                        <legend>Customer Demographic Profile</legend>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="gender">Gender</label>
@@ -41,7 +44,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="SeniorCitizen">Senior Citizen</label>
+                                <label for="SeniorCitizen">Senior Citizen status</label>
                                 <select id="SeniorCitizen" name="SeniorCitizen" required>
                                     <option value="0">No</option>
                                     <option value="1">Yes</option>
@@ -50,14 +53,14 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="Partner">Has Partner</label>
+                                <label for="Partner">Has spouse/partner</label>
                                 <select id="Partner" name="Partner" required>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="Dependents">Has Dependents</label>
+                                <label for="Dependents">Has dependents</label>
                                 <select id="Dependents" name="Dependents" required>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
@@ -66,33 +69,33 @@
                         </div>
                     </fieldset>
 
-                    <!-- Section 2: Services -->
-                    <fieldset>
-                        <legend>Subscription & Services</legend>
+                    <!-- Services Group -->
+                    <fieldset class="form-section">
+                        <legend>Services & Subscriptions</legend>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="tenure">Tenure (Months)</label>
+                                <label for="tenure">Tenure length (Months)</label>
                                 <input type="number" id="tenure" name="tenure" min="0" max="100" value="12" required>
                             </div>
                             <div class="form-group">
-                                <label for="InternetService">Internet Service</label>
+                                <label for="InternetService">Internet Service Provider</label>
                                 <select id="InternetService" name="InternetService" required>
                                     <option value="Fiber optic">Fiber optic</option>
                                     <option value="DSL">DSL</option>
-                                    <option value="No">None</option>
+                                    <option value="No">No internet service</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="PhoneService">Phone Service</label>
+                                <label for="PhoneService">Phone Line Service</label>
                                 <select id="PhoneService" name="PhoneService" required>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="MultipleLines">Multiple Lines</label>
+                                <label for="MultipleLines">Multiple Phone Lines</label>
                                 <select id="MultipleLines" name="MultipleLines" required>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
@@ -102,7 +105,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="OnlineSecurity">Online Security</label>
+                                <label for="OnlineSecurity">Security Protection</label>
                                 <select id="OnlineSecurity" name="OnlineSecurity" required>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
@@ -110,7 +113,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="OnlineBackup">Online Backup</label>
+                                <label for="OnlineBackup">Online Backup Service</label>
                                 <select id="OnlineBackup" name="OnlineBackup" required>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
@@ -120,7 +123,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="DeviceProtection">Device Protection</label>
+                                <label for="DeviceProtection">Device Protection Plan</label>
                                 <select id="DeviceProtection" name="DeviceProtection" required>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
@@ -128,7 +131,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="TechSupport">Tech Support</label>
+                                <label for="TechSupport">Dedicated Tech Support</label>
                                 <select id="TechSupport" name="TechSupport" required>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
@@ -138,7 +141,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="StreamingTV">Streaming TV</label>
+                                <label for="StreamingTV">Streaming TV service</label>
                                 <select id="StreamingTV" name="StreamingTV" required>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
@@ -146,7 +149,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="StreamingMovies">Streaming Movies</label>
+                                <label for="StreamingMovies">Streaming Movies service</label>
                                 <select id="StreamingMovies" name="StreamingMovies" required>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
@@ -156,12 +159,12 @@
                         </div>
                     </fieldset>
 
-                    <!-- Section 3: Billing -->
-                    <fieldset>
-                        <legend>Billing & Payment</legend>
+                    <!-- Contract & Billing Group -->
+                    <fieldset class="form-section">
+                        <legend>Billing & Contract Settings</legend>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="Contract">Contract Type</label>
+                                <label for="Contract">Contract Term</label>
                                 <select id="Contract" name="Contract" required>
                                     <option value="Month-to-month">Month-to-month</option>
                                     <option value="One year">One year</option>
@@ -169,7 +172,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="PaperlessBilling">Paperless Billing</label>
+                                <label for="PaperlessBilling">Paperless Invoicing</label>
                                 <select id="PaperlessBilling" name="PaperlessBilling" required>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -179,57 +182,61 @@
                         <div class="form-group">
                             <label for="PaymentMethod">Payment Method</label>
                             <select id="PaymentMethod" name="PaymentMethod" required>
-                                    <option value="Electronic check">Electronic check</option>
-                                    <option value="Mailed check">Mailed check</option>
-                                    <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
-                                    <option value="Credit card (automatic)">Credit card (automatic)</option>
+                                <option value="Electronic check">Electronic check</option>
+                                <option value="Mailed check">Mailed check</option>
+                                <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+                                <option value="Credit card (automatic)">Credit card (automatic)</option>
                             </select>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="MonthlyCharges">Monthly Bill ($)</label>
+                                <label for="MonthlyCharges">Monthly Charges ($)</label>
                                 <input type="number" step="0.01" id="MonthlyCharges" name="MonthlyCharges" min="0" value="79.95" required>
                             </div>
                             <div class="form-group">
-                                <label for="TotalCharges">Total Billed To Date ($)</label>
+                                <label for="TotalCharges">Total Charges ($)</label>
                                 <input type="number" step="0.01" id="TotalCharges" name="TotalCharges" min="0" value="959.40" required>
                             </div>
                         </div>
                     </fieldset>
 
-                    <button type="submit" class="btn-primary" id="submit-btn">
-                        <span>Evaluate Risk Status</span>
+                    <button type="submit" class="btn-submit" id="submit-btn">
+                        <span>Evaluate Churn Risk</span>
                     </button>
                 </form>
             </section>
 
-            <!-- Right Panel: Results -->
-            <section class="card results-card">
-                <div class="card-header">
+            <!-- Right Card: Assessment & Simulation -->
+            <section class="panel-card assessment-panel">
+                <div class="panel-header">
                     <h2>Risk Evaluation Summary</h2>
-                    <p>Machine learning churn probability analysis and preventive recommendations.</p>
+                    <p>Model output metrics and suggested retention actions for this account profile.</p>
                 </div>
                 
-                <!-- Initial State -->
+                <!-- Placeholder State -->
                 <div id="results-placeholder" class="results-state active">
                     <div class="placeholder-content">
-                        <div class="radar-scan"></div>
-                        <p>Fill out the profile input form and click "Evaluate Risk Status" to run predictions.</p>
+                        <svg class="placeholder-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9"></path>
+                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                        </svg>
+                        <p>Fill out the profile input form and click "Evaluate Churn Risk" to run the evaluation.</p>
                     </div>
                 </div>
 
                 <!-- Loading State -->
                 <div id="results-loading" class="results-state">
-                    <div class="loader">
-                        <div class="double-bounce1"></div>
-                        <div class="double-bounce2"></div>
+                    <div class="spinner-container">
+                        <svg class="spinner-icon" viewBox="0 0 50 50">
+                            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+                        </svg>
                     </div>
-                    <p>Evaluating customer billing nodes and risk coefficients...</p>
+                    <p>Calculating risk probability scores...</p>
                 </div>
 
                 <!-- Success State -->
                 <div id="results-success" class="results-state">
-                    <!-- Probability Indicator -->
+                    <!-- Gauge Grid -->
                     <div class="risk-gauge-container">
                         <div class="gauge-ring">
                             <svg class="gauge-svg">
@@ -244,23 +251,77 @@
                         <div class="risk-badge" id="risk-tier-badge">LOW</div>
                     </div>
 
-                    <!-- Risk Summary Table -->
+                    <!-- Metrics Details List -->
                     <div class="risk-summary">
                         <div class="summary-item">
-                            <span class="label">Prediction Status</span>
+                            <span class="label">System Classification</span>
                             <span class="value" id="res-status">-</span>
                         </div>
                         <div class="summary-item">
-                            <span class="label">Risk Score Probability</span>
+                            <span class="label">Churn Probability</span>
                             <span class="value" id="res-probability">-</span>
                         </div>
                     </div>
 
-                    <!-- Actionable Insights -->
+                    <!-- Actions Ticket System -->
                     <div class="insights-container">
-                        <h3>Recommended Action Items</h3>
+                        <h3>Prioritized Action Checklist</h3>
                         <div class="insights-list" id="insights-list">
                             <!-- Injected by script.js -->
+                        </div>
+                    </div>
+
+                    <!-- Intervention Simulator -->
+                    <div class="sandbox-container">
+                        <h3>Intervention Simulator</h3>
+                        <p class="sandbox-intro">Adjust parameters below to test the probability outcome of proactive account changes.</p>
+                        
+                        <div class="sandbox-controls">
+                            <div class="sandbox-group">
+                                <label for="sim-contract">Simulate Contract Change</label>
+                                <select id="sim-contract" class="sandbox-input">
+                                    <option value="current">Current Profile</option>
+                                    <option value="Month-to-month">Month-to-month</option>
+                                    <option value="One year">One year</option>
+                                    <option value="Two year">Two year</option>
+                                </select>
+                            </div>
+                            
+                            <div class="sandbox-group">
+                                <label for="sim-payment">Simulate Billing Method</label>
+                                <select id="sim-payment" class="sandbox-input">
+                                    <option value="current">Current Profile</option>
+                                    <option value="Bank transfer (automatic)">Bank Transfer (Autopay)</option>
+                                    <option value="Credit card (automatic)">Credit Card (Autopay)</option>
+                                    <option value="Electronic check">Electronic Check</option>
+                                    <option value="Mailed check">Mailed Check</option>
+                                </select>
+                            </div>
+
+                            <div class="sandbox-group">
+                                <div class="slider-label-row">
+                                    <label for="sim-discount">Simulate Bill Discount</label>
+                                    <span id="sim-discount-val">0%</span>
+                                </div>
+                                <input type="range" id="sim-discount" min="0" max="50" step="5" value="0" class="sandbox-slider">
+                            </div>
+                        </div>
+
+                        <!-- Simulated Output -->
+                        <div class="sandbox-output">
+                            <div class="sim-gauge-wrapper">
+                                <div class="sim-gauge-circle">
+                                    <svg class="sim-gauge-svg">
+                                        <circle class="sim-gauge-bg" cx="50" cy="50" r="42"></circle>
+                                        <circle class="sim-gauge-fill" cx="50" cy="50" r="42"></circle>
+                                    </svg>
+                                    <div class="sim-gauge-text" id="sim-gauge-percent">0%</div>
+                                </div>
+                            </div>
+                            <div class="sim-stats">
+                                <div class="sim-badge" id="sim-risk-badge">LOW RISK</div>
+                                <div class="sim-diff-text" id="sim-diff-text">No changes simulated.</div>
+                            </div>
                         </div>
                     </div>
                 </div>

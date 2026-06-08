@@ -10,3 +10,4 @@ fastapi
 uvicorn
 nbconvert
 ipykernel
+httpx

@@ -71,17 +71,18 @@ graph TD
 
 ## 📈 Results & Performance
 
-Below is the model comparison table generated on the test set:
+Below is the model comparison table generated on the test set (using GridSearchCV hyperparameter tuning and class weighting):
 
 | Model | Accuracy | Precision | Recall | F1-Score |
 | :--- | :---: | :---: | :---: | :---: |
-| **Logistic Regression** | **80.34%** | **65.03%** | **55.61%** | **59.95%** |
-| **Random Forest** | 79.56% | 64.67% | 49.73% | 56.22% |
-| **Decision Tree** | 78.49% | 61.27% | 51.34% | 55.87% |
+| **Random Forest** | 76.22% | 53.64% | 76.74% | **63.15%** |
+| **Logistic Regression** | 74.31% | 51.03% | **79.14%** | 62.05% |
+| **Decision Tree** | **80.13%** | **66.79%** | 50.00% | 57.19% |
 
 ### Key Findings
-* **Logistic Regression** is the best performing model based on F1-Score (**59.95%**) and Recall (**55.61%**). 
-* In churn prediction, higher Recall is critical because it identifies a larger fraction of customers who will actually leave, allowing targeted retention campaigns to intercept them.
+* **Random Forest** is the best performing model overall based on F1-Score (**63.15%**).
+* **Logistic Regression** achieved the highest Recall (**79.14%**).
+* Incorporating class balancing and grid search tuning significantly boosted Recall across our models (e.g. Random Forest recall went from **51.07%** to **76.74%**), making them dramatically more useful for business interventions.
 
 ---
 
@@ -133,7 +134,20 @@ Execute the main entry point to run data downloading, cleaning, plotting, model 
 python main.py
 ```
 
-### 4. Open the Jupyter Notebook
+### 4. Run Automated Unit Tests
+Verify model and preprocessing data pipeline logic:
+```bash
+python -m pytest
+```
+
+### 5. Launch the Web App Dashboard
+Serve the model and use the interactive, glassmorphic prediction dashboard:
+```bash
+python app.py
+```
+*Navigate to `http://127.0.0.1:8000` in your web browser to test.*
+
+### 6. Open the Jupyter Notebook
 To run the step-by-step interactive workflow, launch Jupyter:
 ```bash
 jupyter notebook notebooks/churn_analysis.ipynb
@@ -154,9 +168,18 @@ Customer_Churn_Prediction/
 ├── src/
 │   ├── data_cleaning.py                        # Downloader & cleaner
 │   ├── feature_engineering.py                  # Binning & ColumnTransformers
-│   ├── model_training.py                       # Trainer pipelines
+│   ├── model_training.py                       # Trainer pipelines & grid search
 │   ├── evaluation.py                           # Metric calculators
 │   └── visualization.py                        # Plotting code
+│
+├── static/                                     # Web App Frontend assets
+│   ├── index.html                              # Dashboard HTML UI
+│   ├── style.css                               # Glassmorphism design stylesheet
+│   └── script.js                               # API fetch & gauge rendering script
+│
+├── tests/                                      # Automated unit test suite
+│   ├── test_data_cleaning.py                   # Imputation and mapping unit tests
+│   └── test_feature_engineering.py             # Binning and scaling transformer tests
 │
 ├── outputs/
 │   ├── charts/                                 # Saved PNG visualizations
@@ -165,5 +188,6 @@ Customer_Churn_Prediction/
 │
 ├── requirements.txt                            # Dependency list
 ├── README.md                                   # Documentation
+├── app.py                                      # FastAPI backend router & server
 └── main.py                                     # Pipeline runner
 ```

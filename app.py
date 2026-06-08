@@ -22,25 +22,51 @@ model_pipeline = joblib.load(MODEL_PATH)
 
 # Define request schema
 class CustomerData(BaseModel):
-    gender: str = Field(..., example="Female")
-    SeniorCitizen: int = Field(..., example=0)
-    Partner: str = Field(..., example="Yes")
-    Dependents: str = Field(..., example="No")
-    tenure: int = Field(..., example=1)
-    PhoneService: str = Field(..., example="No")
-    MultipleLines: str = Field(..., example="No phone service")
-    InternetService: str = Field(..., example="DSL")
-    OnlineSecurity: str = Field(..., example="No")
-    OnlineBackup: str = Field(..., example="Yes")
-    DeviceProtection: str = Field(..., example="No")
-    TechSupport: str = Field(..., example="No")
-    StreamingTV: str = Field(..., example="No")
-    StreamingMovies: str = Field(..., example="No")
-    Contract: str = Field(..., example="Month-to-month")
-    PaperlessBilling: str = Field(..., example="Yes")
-    PaymentMethod: str = Field(..., example="Electronic check")
-    MonthlyCharges: float = Field(..., example=29.85)
-    TotalCharges: float = Field(..., example=29.85)
+    gender: str
+    SeniorCitizen: int
+    Partner: str
+    Dependents: str
+    tenure: int
+    PhoneService: str
+    MultipleLines: str
+    InternetService: str
+    OnlineSecurity: str
+    OnlineBackup: str
+    DeviceProtection: str
+    TechSupport: str
+    StreamingTV: str
+    StreamingMovies: str
+    Contract: str
+    PaperlessBilling: str
+    PaymentMethod: str
+    MonthlyCharges: float
+    TotalCharges: float
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "gender": "Female",
+                "SeniorCitizen": 0,
+                "Partner": "Yes",
+                "Dependents": "No",
+                "tenure": 1,
+                "PhoneService": "No",
+                "MultipleLines": "No phone service",
+                "InternetService": "DSL",
+                "OnlineSecurity": "No",
+                "OnlineBackup": "Yes",
+                "DeviceProtection": "No",
+                "TechSupport": "No",
+                "StreamingTV": "No",
+                "StreamingMovies": "No",
+                "Contract": "Month-to-month",
+                "PaperlessBilling": "Yes",
+                "PaymentMethod": "Electronic check",
+                "MonthlyCharges": 29.85,
+                "TotalCharges": 29.85
+            }
+        }
+    }
 
 def create_tenure_groups(df):
     """Recreate the binning logic from feature engineering."""
@@ -54,7 +80,7 @@ def create_tenure_groups(df):
 def predict_churn(customer: CustomerData):
     try:
         # Convert request to dictionary
-        data_dict = customer.dict()
+        data_dict = customer.model_dump()
         
         # Create DataFrame
         df = pd.DataFrame([data_dict])
